@@ -1,0 +1,44 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.navbar_all{
+  display: flex;
+}
+
+.navbar{
+  background-color: #8AA6A3;
+  width: 100%;
+}
+
+.navbar li{
+  padding: 10px 10px 10px 10px;
+  float: left;
+  list-style: none;
+}
+
+li >a{
+  text-decoration: none;
+  color: #000;
+}
+
+.carousel_image{
+  padding: 50px;
+}
+
+.news{
+  display: flex;
+}
+
+.table_infos{
+  display: grid;
+  grid-template-columns: 500px 500px;
+  padding: 50px;
+  gap: 50px;
+}
+
+.page_right{
+  margin: auto;
+  padding: auto;
+}
