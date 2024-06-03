@@ -1,5 +1,31 @@
-<><script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script></>
-var myCarousel = document.querySelector('#carouselExampleCaptions');
-var carousel = new bootstrap.Carousel(myCarousel, {
-  interval: 1000
+document.addEventListener('DOMContentLoaded', function () {
+  const ratings = document.querySelectorAll('.rating');
+
+  ratings.forEach(rating => {
+    const stars = rating.querySelectorAll('.star');
+    const ratingInput = rating.querySelector('.rating-input');
+
+    stars.forEach(star => {
+      star.addEventListener('click', function () {
+        const ratingValue = parseInt(this.getAttribute('data-rating'));
+
+        if (star === stars[0] && star.classList.contains('checked')) {
+          // Se a primeira estrela estiver marcada, desmarque todas as estrelas
+          stars.forEach(s => {
+            s.classList.remove('checked');
+          });
+          ratingInput.value = 0; // Define a avaliação como zero
+        } else {
+          stars.forEach(s => {
+            if (parseInt(s.getAttribute('data-rating')) <= ratingValue) {
+              s.classList.add('checked');
+            } else {
+              s.classList.remove('checked');
+            }
+          });
+          ratingInput.value = ratingValue;
+        }
+      });
+    });
+  });
 });
