@@ -2,30 +2,39 @@ document.addEventListener('DOMContentLoaded', function () {
   const ratings = document.querySelectorAll('.rating');
 
   ratings.forEach(rating => {
-    const stars = rating.querySelectorAll('.star');
-    const ratingInput = rating.querySelector('.rating-input');
+      const stars = rating.querySelectorAll('.star');
+      const ratingInput = rating.querySelector('.rating-input');
+      const ratingId = rating.getAttribute('data-id');
+      const storedRating = localStorage.getItem(`rating_${ratingId}`);
 
-    stars.forEach(star => {
-      star.addEventListener('click', function () {
-        const ratingValue = parseInt(this.getAttribute('data-rating'));
+      if (storedRating) {
+          highlightStars(storedRating, stars, ratingInput);
+      }
 
-        if (star === stars[0] && star.classList.contains('checked')) {
-          // Se a primeira estrela estiver marcada, desmarque todas as estrelas
-          stars.forEach(s => {
-            s.classList.remove('checked');
+      stars.forEach(star => {
+          star.addEventListener('click', function () {
+              const ratingValue = parseInt(this.getAttribute('data-rating'));
+
+              if (star === stars[0] && star.classList.contains('checked')) {
+                  // Se a primeira estrela estiver marcada, desmarque todas as estrelas
+                  highlightStars(0, stars, ratingInput);
+                  localStorage.removeItem(`rating_${ratingId}`);
+              } else {
+                  highlightStars(ratingValue, stars, ratingInput);
+                  localStorage.setItem(`rating_${ratingId}`, ratingValue);
+              }
           });
-          ratingInput.value = 0; // Define a avaliação como zero
-        } else {
-          stars.forEach(s => {
-            if (parseInt(s.getAttribute('data-rating')) <= ratingValue) {
-              s.classList.add('checked');
-            } else {
-              s.classList.remove('checked');
-            }
-          });
-          ratingInput.value = ratingValue;
-        }
       });
-    });
   });
+
+  function highlightStars(rating, stars, ratingInput) {
+      stars.forEach(star => {
+          if (parseInt(star.getAttribute('data-rating')) <= rating) {
+              star.classList.add('checked');
+          } else {
+              star.classList.remove('checked');
+          }
+      });
+      ratingInput.value = rating;
+  }
 });
