@@ -60,6 +60,11 @@ li >a{
   margin-right: 30px;
 }
 
+.notice{
+  position: static;
+  max-height: 200px;
+}
+
 #info{
   text-align: justify;
   padding: 30px;
@@ -94,6 +99,7 @@ aside{
 
 .rating{
   display: flex;
+  position: static;
   justify-content: center;
 }
 
