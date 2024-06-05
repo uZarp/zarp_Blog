@@ -80,12 +80,12 @@ li >a{
 
 .table-infos{
   display: grid;
-  grid-template-columns: 5fr 8fr;
+  grid-template-columns: 5fr 5fr 5fr;
   margin-top: 30px;
   margin-right: 30px;
-  margin-left: 30px;
+  margin-left: 80px;
   gap: 10px;
-  width: 1000px;
+  max-width: 1000px;
 }
 
 .notice{
@@ -109,13 +109,20 @@ li >a{
   background-color: #8AA6A3;
 }
 
+.the-news2{
+  position: relative;
+  border: 1px solid #000;
+  background-color: #8AA6A3;
+  margin: 30px auto 30px 30px;
+}
+
 aside{
   display: flex;
-  float: right;
   width: 300px;
   height: 500px;
   margin-top: 30px;
-  margin-right: 30px;
+  margin-right: 80px;
+  margin-left: auto;
   background-color: burlywood;
 } 
 
