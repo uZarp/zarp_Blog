@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function () {
               const ratingValue = parseInt(this.getAttribute('data-rating'));
 
               if (star === stars[0] && star.classList.contains('checked')) {
-                  // Se a primeira estrela estiver marcada, desmarque todas as estrelas
                   highlightStars(0, stars, ratingInput);
                   localStorage.removeItem(`rating_${ratingId}`);
               } else {
